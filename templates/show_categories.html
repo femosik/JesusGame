@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Jesus Game</title>
+    <title>Все категории</title>
     <link href="https://fonts.googleapis.com/css?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <style>
         .clearfix{
@@ -50,10 +51,10 @@
             font-size: 25px;
         }
         .mainImg{
-            height: 175px;
+            height: 250px;
             width: auto;
-            margin: 10px;
-            float: left;
+            margin: 20px;
+            box-shadow: 2px 2px 5px black;
         }
         .text1{
             font-family: 'Oswald', sans-serif;
@@ -62,11 +63,11 @@
         }
         .description{
             font-family: 'Oswald', sans-serif;
-            color: white;
-            font-size: 18px;
+            color: #262626;
+            font-size: 16px;
         }
         .mainLogo{
-            font-size: 40px;
+            font-size: 25px;
             color: #262626;
         }
     </style>
@@ -74,32 +75,16 @@
 <body>
     <div class="shapka">
         <i class="fas fa-gamepad shapkaLogo"></i>
-        <span class="shapkaText">Jesus Game</span>
-        <!--<a href="" class="navigation">Главная</a>
-        <a href="" class="navigation">Категории</a>
-        <a href="" class="navigation">Все игры</a>-->
+        <span class="shapkaText">Все категории</span>
+        <a href="/" class="navigation">Главная</a>
+        <a href="/categories" class="navigation">Категории</a>
+        <a href="/games" class="navigation">Все игры</a>
     </div>
-    <div class="container">
-        <div>
-            <span class="mainText">Самые лучшие игры у нас!</span><br><br>
-            <i class="fas fa-dice-five mainLogo"></i>
-            <a href="/categories" class="text1">Категории</a><br>
-            <i class="fas fa-dice-two mainLogo"></i>
-            <a href="/games" class="text1">Все игры</a>
-        </div><br><br>
-        <div>
-            <span class="text1">Свежие новинки</span><br>
-            {% for game in games %}
-                <div class="shapka" style="width: 50%; margin: 10px; padding: 5px; height: auto; box-shadow: 2px 2px 5px black;">
-                    <div>
-                        <a href="/games/{{ game.id }}"><img src="{{ game.img }}" class="mainImg"></a>
-                        <a href="/games/{{ game.id }}" class="text1">{{ game.name }}</a><br>
-                        <span class="description">{{ game.description }}</span>
-                    </div>
-                <div class="clearfix"></div></div>
-            {% endfor %}
-        </div>
-    </div>
+    {% for category in categories %}
+        <div class="container" style="width: auto; height: auto; text-align: center; padding: 10px; border-radius: 5px; float: left;">
+           <a class="text1" href="{{ category.id }}">{{ category.name }}</a>
+        <div class="clearfix"></div></div>
+    {% endfor %}
 
 </body>
 </html>
